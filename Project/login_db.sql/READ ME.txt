@@ -1,0 +1,4 @@
+1. Put the project file into the xampp folder-->htdocs folder
+2. Create a new database in http://localhost/phpmyadmin/, and name it login_db
+3. Import this SQL file(login_db.sql) into the login_db database
+4. Input http://localhost/Project/login.php into the browser address box and start exploring. 

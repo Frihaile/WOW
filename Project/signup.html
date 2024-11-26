@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Signup</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/light.css">
+    <script src="https://unpkg.com/just-validate@latest/dist/just-validate.production.min.js"> </script>
+    <script src="/validation.js"></script>
+    <style media="screen">
+      .banner{
+      width:100%;
+      height:auto;
+      background:#E4E997;
+       }
+      .signform{
+        display:inline-block;
+        width:100%;
+        height:auto;
+        background:#CCCCFF;
+        margin-top:10px;
+        padding-left:;
+        padding-top:6%;
+        padding-bottom:6%;
+        border-radius:10px 10px;
+      }
+      </style>
+    </head>
+
+  <body>
+
+    <div class="banner"><h1>Signup</h1></div>
+    <p><a href="login.php">Login ></a></p>
+    <div class="signform">
+
+      <center>
+      <form class="" action="process_signup.php" method="post" id="signup"  novalidate>
+
+        <div class="">
+          <label for="name">Name</label>
+          <input type="text"  id="name" name="name"  data-just-validate-fallback-disabled="false" style>
+        </div>
+
+        <div class="">
+          <label for="email">Email</label>
+          <input type="email"  id="email" name="email"  data-just-validate-fallback-disabled="false" style>
+        </div>
+
+        <div class="">
+          <label for="password">Password</label>
+          <input type="password"  id="password" name="password"  data-just-validate-fallback-disabled="false" style >
+        </div>
+
+        <div class="">
+          <label for="password_confirmation">Repeat Password</label>
+          <input type="password"  id="password_confirmation" name="password_confirmation" autocomplete="off" data-just-validate-fallback-disabled="false" style>
+        </div>
+
+          <br><button>Sign up</button>
+          <!--Button's name/id cannot be 'submit'-->
+      </form>
+
+      <script>
+        (() => {
+          const validation = new JustValidate('#signup',
+                           {focusInvalidField: true,
+                           lockForm: true,});
+
+          validation
+            .addField('#name', [
+              {
+                    rule:'required',
+              }
+            ])
+            .addField('#email', [
+              {
+                    rule:'required',
+              },
+              {
+                    rule:'email',
+              },
+            ])
+
+            .addField('#password', [
+              {
+                    rule:'required',
+              },
+              {
+                    rule:'password',
+              }
+            ])
+            .addField('#password_confirmation', [
+              {
+                    validator:(value,fields) => {
+                      return value === fields["#password"].elem.value;
+                    },
+                    errorMessage:"Password should match"
+              }
+            ])
+
+            .onSuccess((event) => {
+              document.getElementById("signup").submit();
+              //Button's name/id cannot be 'submit'
+            });
+
+        })();
+      </script>
+
+
+
+
+
+      </center>
+    </div>
+  </body>
+</html>
