@@ -1,0 +1,60 @@
+:root {
+    --w: 240px;
+    --h: 240px;
+}
+
+#book {
+    height: var(--h);
+    position: relative;
+    margin: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 1s;
+    perspective: 1800px;
+    transform-style: preserve-3d;
+}
+.book-cover {
+    /* 封面比页面每条边宽25px */
+    height: calc(var(--h) + 35px);
+    width: calc(var(--w) + 35px);
+    position: absolute;
+    background-image: linear-gradient(to bottom, #d8bfd829,rgb(230, 216, 247));
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    transition: 1s;
+    transform-origin: left;
+    backface-visibility: visible;
+    border: 1px solid rgba(83, 77, 83, 0.5);
+    overflow: hidden;
+}
+.book-page {
+    height: var(--h);
+    width: var(--w);
+    position: absolute;
+    z-index: 100;
+    transition: 1s;
+    /* 封面比页面每条边宽的长度 */
+    transform-origin: -25px;
+    background-size: cover;
+    backface-visibility: visible;
+}
+
+#control {
+    margin-top: 10px;
+    user-select: none;
+}
+#control button {
+    display: inline-block;
+    width: 40px;
+    height: 45px;
+    border: 0;
+    margin: 0px 15px;
+    color: #fff;
+    font-size: 20px;
+    font-weight: bold;
+    background-color:rgb(230, 216, 247);
+    outline: inherit;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
